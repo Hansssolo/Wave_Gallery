@@ -46,6 +46,10 @@
             <img src="gifs/GIF_CFL1.gif" alt="CFL 0.707" />
             <p>CFL = 0.707</p>
         </div>
+        <div class="gif-card">
+            <img src="gifs/GIF_CFL0707.gif" alt="CFL 0.707" />
+            <p>CFL = 0.707</p>
+        </div>
         <!-- Duplicate the gif-card div below for more GIFs -->
     </div>
 </body>
