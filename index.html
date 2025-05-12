@@ -103,6 +103,18 @@
       color: white;
       text-decoration: none;
     }
+    /* Center the 1-GIF row (4th item) */
+    .gallery .gif-card:nth-child(4) {
+      grid-column: 2 / span 1; /* Places it in the center column */
+    }
+    
+    /* Center the 2-GIF row (5th and 6th items) */
+    .gallery .gif-card:nth-child(5) {
+      grid-column: 1 / span 1; /* First item in the 2-GIF row */
+    }
+    .gallery .gif-card:nth-child(6) {
+      grid-column: 3 / span 1; /* Second item in the 2-GIF row */
+    }
   </style>
 </head>
 <body>
