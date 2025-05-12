@@ -1,188 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My GIF Gallery</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f8f8f8;
-            margin: 0;
-            padding: 2rem;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My GIF Gallery</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f8f8;
+      margin: 0;
+      padding: 2rem;
+    }
 
-        h1 {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
+    h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
 
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr); /* Fixed 3 columns */
-            gap: 1.5rem;
-        }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
 
-        .gif-card {
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            padding: 1rem;
-            text-align: center;
-            cursor: pointer;
-        }
+    .gif-card {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      padding: 1rem;
+      text-align: center;
+      cursor: pointer;
+    }
 
-        .gif-card img {
-            width: 100%;
-            max-height: 300px;
-            object-fit: contain;
-            border-radius: 5px;
-        }
+    .gif-card img {
+      width: 100%;
+      max-height: 300px;
+      object-fit: contain;
+      border-radius: 5px;
+    }
 
-        .gif-card p {
-            margin-top: 0.5rem;
-            font-size: 0.95rem;
-        }
+    .gif-card p {
+      margin-top: 0.5rem;
+      font-size: 0.95rem;
+    }
 
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .gallery {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
+    /* Row control using nth-child */
+    .gallery .gif-card:nth-child(4) {
+      grid-column: 2 / span 1;
+    }
 
-        @media (max-width: 600px) {
-            .gallery {
-                grid-template-columns: 1fr;
-            }
-        }
+    .gallery .gif-card:nth-child(5),
+    .gallery .gif-card:nth-child(6) {
+      grid-column: span 1;
+    }
 
-        /* Lightbox styles */
-        .lightbox {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: rgba(0, 0, 0, 0.9);
-            align-items: center;
-            justify-content: center;
-        }
+    /* Responsive adjustments */
+    @media (max-width: 1024px) {
+      .gallery {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .gallery .gif-card:nth-child(4) {
+        grid-column: span 2;
+      }
+    }
 
-        .lightbox img {
-            max-width: 90%;
-            max-height: 90%;
-        }
+    @media (max-width: 600px) {
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+      .gallery .gif-card:nth-child(4) {
+        grid-column: span 1;
+      }
+    }
 
-        .lightbox:target {
-            display: flex;
-        }
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.9);
+      align-items: center;
+      justify-content: center;
+    }
 
-        .lightbox-close {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            font-size: 2rem;
-            color: white;
-            text-decoration: none;
-        }
-        .row {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-    
-        .row-1 .gif-card {
-            flex: 0 1 33%;
-        }
-    
-        .row-2 .gif-card {
-            flex: 0 1 40%;
-        }
-        
-        .row-3 .gif-card {
-        flex: 0 1 30%;
-        }
-    </style>
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+    }
+
+    .lightbox:target {
+      display: flex;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 2rem;
+      color: white;
+      text-decoration: none;
+    }
+  </style>
 </head>
 <body>
-    <h1>My GIF Gallery</h1>
-    <div class="gallery">
-    <!-- Row 1: 3 gifs -->
-        <div class="row row-3">
-            <div class="gif-card">
-                <img src="Wave3.gif" alt="Wave3" onclick="openLightbox('Wave3.gif')" />
-                <p>Static wave at constant depth</p>
-            </div>
-            <div class="gif-card">
-                <img src="Wave_right.gif" alt="Wave_right" onclick="openLightbox('Wave_right.gif')" />
-                <p>Right wave at constant depth</p>
-            </div>
-            <div class="gif-card">
-                <img src="Wave_left.gif" alt="Wave_left" onclick="openLightbox('Wave_left.gif')" />
-                <p>Left wave at constant depth</p>
-            </div>
-        </div>
+  <h1>My GIF Gallery</h1>
+  <div class="gallery">
+    <!-- Row 1: 3 items -->
+    <div class="gif-card"><img src="Wave3.gif" onclick="openLightbox('Wave3.gif')" /><p>Static wave at constant depth</p></div>
+    <div class="gif-card"><img src="Wave_right.gif" onclick="openLightbox('Wave_right.gif')" /><p>Right wave at constant depth</p></div>
+    <div class="gif-card"><img src="Wave_left.gif" onclick="openLightbox('Wave_left.gif')" /><p>Left wave at constant depth</p></div>
     
-        <!-- Row 2: 1 gif -->
-        <div class="row row-1">
-            <div class="gif-card">
-                <img src="Tsunami.gif" alt="Tsunami" onclick="openLightbox('Tsunami.gif')" />
-                <p>1D tsunami</p>
-            </div>
-        </div>
+    <!-- Row 2: 1 item centered using grid-column -->
+    <div class="gif-card"><img src="Tsunami.gif" onclick="openLightbox('Tsunami.gif')" /><p>1D tsunami</p></div>
     
-        <!-- Row 3: 2 gifs -->
-        <div class="row row-2">
-            <div class="gif-card">
-                <img src="GIF_CFL0707.gif" alt="CFL 0.707" onclick="openLightbox('GIF_CFL0707.gif')" />
-                <p>CFL = 0.707</p>
-            </div>
-            <div class="gif-card">
-                <img src="GIF_CFL1.gif" alt="CFL 1" onclick="openLightbox('GIF_CFL1.gif')" />
-                <p>CFL = 1</p>
-            </div>
-        </div>
+    <!-- Row 3: 2 items -->
+    <div class="gif-card"><img src="GIF_CFL0707.gif" onclick="openLightbox('GIF_CFL0707.gif')" /><p>CFL = 0.707</p></div>
+    <div class="gif-card"><img src="GIF_CFL1.gif" onclick="openLightbox('GIF_CFL1.gif')" /><p>CFL = 1</p></div>
     
-        <!-- Row 4: 3 gifs -->
-        <div class="row row-3">
-            <div class="gif-card">
-                <img src="Lausanne_tsunami_1m.gif" alt="1 m" onclick="openLightbox('Lausanne_tsunami_1m.gif')" />
-                <p>Lausanne tsunami - 1m</p>
-            </div>
-            <div class="gif-card">
-                <img src="Lausanne_tsunami_3m.gif" alt="3 m" onclick="openLightbox('Lausanne_tsunami_3m.gif')" />
-                <p>Lausanne tsunami - 3m</p>
-            </div>
-            <div class="gif-card">
-                <img src="Lausanne_tsunami_5m.gif" alt="5 m" onclick="openLightbox('Lausanne_tsunami_5m.gif')" />
-                <p>Lausanne tsunami - 5m</p>
-            </div>
-        </div>
-    </div>
+    <!-- Row 4: 3 items -->
+    <div class="gif-card"><img src="Lausanne_tsunami_1m.gif" onclick="openLightbox('Lausanne_tsunami_1m.gif')" /><p>1 m tsunami</p></div>
+    <div class="gif-card"><img src="Lausanne_tsunami_3m.gif" onclick="openLightbox('Lausanne_tsunami_3m.gif')" /><p>3 m tsunami</p></div>
+    <div class="gif-card"><img src="Lausanne_tsunami_5m.gif" onclick="openLightbox('Lausanne_tsunami_5m.gif')" /><p>5 m tsunami</p></div>
+  </div>
 
-    <!-- Lightbox container -->
-    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
-        <a href="#" class="lightbox-close">&times;</a>
-        <img id="lightbox-img" src="" alt="Enlarged GIF" />
-    </div>
+  <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+    <a href="#" class="lightbox-close">&times;</a>
+    <img id="lightbox-img" src="" />
+  </div>
 
-    <script>
-        function openLightbox(src) {
-            const lightbox = document.getElementById("lightbox");
-            const lightboxImg = document.getElementById("lightbox-img");
-            lightboxImg.src = src;
-            lightbox.style.display = "flex";
-        }
+  <script>
+    function openLightbox(src) {
+      const lightbox = document.getElementById("lightbox");
+      document.getElementById("lightbox-img").src = src;
+      lightbox.style.display = "flex";
+    }
 
-        function closeLightbox() {
-            const lightbox = document.getElementById("lightbox");
-            lightbox.style.display = "none";
-        }
-    </script>
+    function closeLightbox() {
+      document.getElementById("lightbox").style.display = "none";
+    }
+  </script>
 </body>
 </html>
