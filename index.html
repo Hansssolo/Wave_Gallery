@@ -12,15 +12,16 @@
       padding: 2rem;
     }
 
-    h1 {
+    h1, h2 {
       text-align: center;
-      margin-bottom: 2rem;
+      margin-bottom: 1rem;
     }
 
     .gallery {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1.5rem;
+      margin-bottom: 2rem;
     }
 
     .gif-card {
@@ -44,23 +45,32 @@
       font-size: 0.95rem;
     }
 
-    /* Row control using nth-child */
-    .gallery .gif-card:nth-child(4) {
-      grid-column: 2 / span 1;
+    .single-centered {
+      grid-template-columns: 1fr;
+      justify-content: center;
     }
 
-    .gallery .gif-card:nth-child(5),
-    .gallery .gif-card:nth-child(6) {
-      grid-column: span 1;
+    .two-centered {
+      grid-template-columns: repeat(3, 1fr);
     }
 
-    /* Responsive adjustments */
+    .two-centered .gif-card:first-child {
+      grid-column: 1;
+    }
+
+    .two-centered .gif-card:last-child {
+      grid-column: 3;
+    }
+
     @media (max-width: 1024px) {
       .gallery {
         grid-template-columns: repeat(2, 1fr);
       }
-      .gallery .gif-card:nth-child(4) {
-        grid-column: span 2;
+      .two-centered {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .two-centered .gif-card {
+        grid-column: auto;
       }
     }
 
@@ -68,8 +78,8 @@
       .gallery {
         grid-template-columns: 1fr;
       }
-      .gallery .gif-card:nth-child(4) {
-        grid-column: span 1;
+      .two-centered {
+        grid-template-columns: 1fr;
       }
     }
 
@@ -103,40 +113,31 @@
       color: white;
       text-decoration: none;
     }
-    /* Center the 1-GIF row (4th item) */
-    .gallery .gif-card:nth-child(4) {
-      grid-column: 2 / span 1; /* Places it in the center column */
-    }
-    
-    /* Center the 2-GIF row (5th and 6th items) */
-    .gallery .gif-card:nth-child(5) {
-      grid-column: 1 / span 1; /* First item in the 2-GIF row */
-    }
-    .gallery .gif-card:nth-child(6) {
-      grid-column: 3 / span 1; /* Second item in the 2-GIF row */
-    }
   </style>
 </head>
 <body>
   <h1>Exercice 5 - Wave mechanics</h1>
+
+  <h2>Constant depth</h2>
   <div class="gallery">
-    <!-- Row 1: 3 items -->
-    <h2>Constant depth</h2>
     <div class="gif-card"><img src="Wave3.gif" onclick="openLightbox('Wave3.gif')" /><p>Static wave at constant depth</p></div>
     <div class="gif-card"><img src="Wave_right.gif" onclick="openLightbox('Wave_right.gif')" /><p>Right wave at constant depth</p></div>
     <div class="gif-card"><img src="Wave_left.gif" onclick="openLightbox('Wave_left.gif')" /><p>Left wave at constant depth</p></div>
-    
-    <!-- Row 2: 1 item centered using grid-column -->
-    <h2>Tsunami</h2>
+  </div>
+
+  <h2>Tsunami</h2>
+  <div class="gallery single-centered">
     <div class="gif-card"><img src="Tsunami.gif" onclick="openLightbox('Tsunami.gif')" /><p>1D tsunami</p></div>
-    
-    <!-- Row 3: 2 items -->
-    <h2>2D CFL tests</h2>
+  </div>
+
+  <h2>2D CFL tests</h2>
+  <div class="gallery two-centered">
     <div class="gif-card"><img src="GIF_CFL0707.gif" onclick="openLightbox('GIF_CFL0707.gif')" /><p>CFL = 0.707</p></div>
     <div class="gif-card"><img src="GIF_CFL1.gif" onclick="openLightbox('GIF_CFL1.gif')" /><p>CFL = 1</p></div>
-    
-    <!-- Row 4: 3 items -->
-    <h2>Wave on the Geneva lake</h2>
+  </div>
+
+  <h2>Wave on the Geneva lake</h2>
+  <div class="gallery">
     <div class="gif-card"><img src="Lausanne_tsunami_1m.gif" onclick="openLightbox('Lausanne_tsunami_1m.gif')" /><p>1 m tsunami</p></div>
     <div class="gif-card"><img src="Lausanne_tsunami_3m.gif" onclick="openLightbox('Lausanne_tsunami_3m.gif')" /><p>3 m tsunami</p></div>
     <div class="gif-card"><img src="Lausanne_tsunami_5m.gif" onclick="openLightbox('Lausanne_tsunami_5m.gif')" /><p>5 m tsunami</p></div>
