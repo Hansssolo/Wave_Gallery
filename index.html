@@ -151,6 +151,11 @@
         closeLightbox();
       }
     });
+
+    // Ensure lightbox is hidden on page load
+    window.onload = function() {
+      document.getElementById("lightbox").style.display = "none";
+    };
   </script>
 </body>
 </html>
