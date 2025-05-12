@@ -50,7 +50,7 @@
     }
 
     .lightbox {
-      display: none;
+      display: none; /* Ensure it starts off hidden */
       position: fixed;
       z-index: 1000;
       top: 0;
@@ -63,13 +63,13 @@
       display: flex;
       flex-direction: column;
     }
-    
+
     .lightbox img {
       max-width: 90%;
       max-height: 90%;
       object-fit: contain;
     }
-    
+
     .lightbox-close {
       position: absolute;
       top: 20px;
@@ -131,15 +131,26 @@
   </div>
 
   <script>
+    // Function to open the lightbox
     function openLightbox(src) {
       const lightbox = document.getElementById("lightbox");
       document.getElementById("lightbox-img").src = src;
       lightbox.style.display = "flex";
+      // Ensure no fragment identifier is added to the URL
+      history.pushState(null, '', location.href.split('#')[0]);
     }
 
+    // Function to close the lightbox
     function closeLightbox() {
       document.getElementById("lightbox").style.display = "none";
     }
+
+    // Optional: Close lightbox when clicking anywhere (except the image itself)
+    document.getElementById("lightbox").addEventListener('click', function(event) {
+      if (event.target === this) {
+        closeLightbox();
+      }
+    });
   </script>
 </body>
 </html>
