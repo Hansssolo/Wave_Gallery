@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My GIF Gallery</title>
+  <title>Exercise 5 - Wave Mechanics</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -12,14 +12,25 @@
       padding: 2rem;
     }
 
-    h1, h2 {
+    a.back-button {
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      padding: 10px 15px;
+      background-color: #4CAF50;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    h1, h2, h3 {
       text-align: center;
       margin-bottom: 1rem;
     }
 
     .gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Auto-fill with 250px minimum */
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
       gap: 1.5rem;
       margin-bottom: 2rem;
     }
@@ -31,16 +42,16 @@
       padding: 1rem;
       text-align: center;
       cursor: pointer;
-      display: flex; /* Enable Flexbox */
-      flex-direction: column; /* Align children vertically */
-      justify-content: center; /* Center vertically */
-      align-items: center; /* Center horizontally */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
 
     .gif-card img {
       max-width: 100%;
       max-height: 300px;
-      object-fit: contain; /* Ensure the image fits within its container */
+      object-fit: contain;
       border-radius: 5px;
     }
 
@@ -50,7 +61,7 @@
     }
 
     .lightbox {
-      display: none; /* Ensure it starts off hidden */
+      display: none;
       position: fixed;
       z-index: 1000;
       top: 0;
@@ -81,22 +92,27 @@
 
     @media (max-width: 1024px) {
       .gallery {
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Auto-fill with 200px minimum */
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
       }
     }
 
     @media (max-width: 600px) {
       .gallery {
-        grid-template-columns: 1fr; /* Single column on small screens */
+        grid-template-columns: 1fr;
       }
     }
   </style>
 </head>
 <body>
-  <h1>Exercise 5 - Wave mechanics</h1>
-  <p>The following videos are all the simulations corresponding to <i>Physique Numérique - Exercice 5</i> by Inès Cherfi and Pierrick Gourlaouen. Clicking on the videos enlarges them. <br>
-    The simulations need some time to load, and some waiting might be necessary. If any problems occur, don't hesitate to contact one of the two authors.</p>
-  <h2>Constant propagation speed</h2>
+
+  <a href="index.html" class="back-button">&larr; Back to Menu</a>
+
+  <h1>Exercise 5 - Wave Mechanics</h1>
+  <p style="text-align:center;">The following videos are all the simulations corresponding to <i>Physique Numérique - Exercice 5</i> by Inès Cherfi and Pierrick Gourlaouen. Clicking on the videos enlarges them.<br>
+    The simulations need some time to load, and some waiting might be necessary. If any problems occur, don't hesitate to contact one of the two authors.
+  </p>
+
+  <h2>Constant Propagation Speed</h2>
   <div class="gallery">
     <div class="gif-card"><img src="Wave3.gif" alt="Static wave at constant depth" onclick="openLightbox('Wave3.gif')" /><p>Static wave at constant depth</p></div>
     <div class="gif-card"><img src="Wave_right.gif" alt="Right wave at constant depth" onclick="openLightbox('Wave_right.gif')" /><p>Right wave at constant depth</p></div>
@@ -107,54 +123,54 @@
   <div class="gallery">
     <div class="gif-card"><img src="Tsunami.gif" alt="1D tsunami" onclick="openLightbox('Tsunami.gif')" /><p>1D tsunami</p></div>
   </div>
-  <h2>2D waves and tsnumai on the Geneva lake</h2>
-  <h3>2D CFL tests</h3>
+
+  <h2>2D Waves and Tsunami on the Geneva Lake</h2>
+
+  <h3>2D CFL Tests</h3>
   <div class="gallery">
     <div class="gif-card"><img src="GIF_CFL0707.gif" alt="CFL = 0.707" onclick="openLightbox('GIF_CFL0707.gif')" /><p>CFL = 0.707</p></div>
     <div class="gif-card"><img src="GIF_CFL1.gif" alt="CFL = 1" onclick="openLightbox('GIF_CFL1.gif')" /><p>CFL = 1</p></div>
   </div>
 
-  <h3>Waves on the Geneva lake</h3>
+  <h3>Waves on the Geneva Lake</h3>
   <div class="gallery">
     <div class="gif-card"><img src="Lausanne_tsunami_1m.gif" alt="1 m tsunami" onclick="openLightbox('Lausanne_tsunami_1m.gif')" /><p>1 m tsunami</p></div>
     <div class="gif-card"><img src="Lausanne_tsunami_3m.gif" alt="3 m tsunami" onclick="openLightbox('Lausanne_tsunami_3m.gif')" /><p>3 m tsunami</p></div>
     <div class="gif-card"><img src="Lausanne_tsunami_5m.gif" alt="5 m tsunami" onclick="openLightbox('Lausanne_tsunami_5m.gif')" /><p>5 m tsunami</p></div>
   </div>
 
-  <h3>Wide wave on the Geneva lake</h3>
+  <h3>Wide Wave on the Geneva Lake</h3>
   <div class="gallery">
     <div class="gif-card"><img src="Lausanne_tsunami_wide.gif" alt="wide tsunami" onclick="openLightbox('Lausanne_tsunami_wide.gif')" /><p>Wide tsunami, 5 meters high</p></div>
     <div class="gif-card"><img src="Lausanne_tsunami_wide_10.gif" alt="wide tsunami" onclick="openLightbox('Lausanne_tsunami_wide_10.gif')" /><p>Wide tsunami, 10 meters high</p></div>
   </div>
 
+  <a href="index.html" class="back-button">&larr; Back to Menu</a>
+
+  <!-- Lightbox Modal -->
   <div id="lightbox" class="lightbox" onclick="closeLightbox()">
     <a href="#" class="lightbox-close">&times;</a>
     <img id="lightbox-img" src="" />
   </div>
 
   <script>
-    // Function to open the lightbox
     function openLightbox(src) {
       const lightbox = document.getElementById("lightbox");
       document.getElementById("lightbox-img").src = src;
       lightbox.style.display = "flex";
-      // Ensure no fragment identifier is added to the URL
       history.pushState(null, '', location.href.split('#')[0]);
     }
 
-    // Function to close the lightbox
     function closeLightbox() {
       document.getElementById("lightbox").style.display = "none";
     }
 
-    // Optional: Close lightbox when clicking anywhere (except the image itself)
     document.getElementById("lightbox").addEventListener('click', function(event) {
       if (event.target === this) {
         closeLightbox();
       }
     });
 
-    // Ensure lightbox is hidden on page load
     window.onload = function() {
       document.getElementById("lightbox").style.display = "none";
     };
