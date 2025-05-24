@@ -2,178 +2,69 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Exercise 5 - Wave Mechanics</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Exercise Menu</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f8f8f8;
+      background-color: #eef2f3;
       margin: 0;
       padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
-    a.back-button {
-      display: inline-block;
-      margin-bottom: 1.5rem;
-      padding: 10px 15px;
+    h1 {
+      margin-bottom: 2rem;
+      color: #333;
+    }
+
+    .menu {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .menu a {
+      display: block;
       background-color: #4CAF50;
       color: white;
-      text-decoration: none;
-      border-radius: 8px;
-      font-size: 16px;
-    }
-
-    h1, h2, h3 {
-      text-align: center;
-      margin-bottom: 1rem;
-    }
-
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 2rem;
-    }
-
-    .gif-card {
-      background-color: white;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
       padding: 1rem;
+      border-radius: 10px;
       text-align: center;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .gif-card img {
-      max-width: 100%;
-      max-height: 300px;
-      object-fit: contain;
-      border-radius: 5px;
-    }
-
-    .gif-card p {
-      margin-top: 0.5rem;
-      font-size: 0.95rem;
-    }
-
-    .lightbox {
-      display: none;
-      position: fixed;
-      z-index: 1000;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(0, 0, 0, 0.9);
-      align-items: center;
-      justify-content: center;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .lightbox img {
-      max-width: 90%;
-      max-height: 90%;
-      object-fit: contain;
-    }
-
-    .lightbox-close {
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      font-size: 2rem;
-      color: white;
       text-decoration: none;
+      font-size: 1.2rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      transition: background-color 0.2s ease;
     }
 
-    @media (max-width: 1024px) {
-      .gallery {
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      }
+    .menu a:hover {
+      background-color: #45a049;
     }
 
-    @media (max-width: 600px) {
-      .gallery {
-        grid-template-columns: 1fr;
-      }
+    footer {
+      margin-top: 3rem;
+      font-size: 0.9rem;
+      color: #777;
     }
   </style>
 </head>
 <body>
 
-  <a href="index.html" class="back-button">&larr; Back to Menu</a>
+  <h1>Physics Simulations - Exercise Menu</h1>
 
-  <h1>Exercise 5 - Wave Mechanics</h1>
-  <p style="text-align:center;">The following videos are all the simulations corresponding to <i>Physique Numérique - Exercice 5</i> by Inès Cherfi and Pierrick Gourlaouen. Clicking on the videos enlarges them.<br>
-    The simulations need some time to load, and some waiting might be necessary. If any problems occur, don't hesitate to contact one of the two authors.
-  </p>
-
-  <h2>Constant Propagation Speed</h2>
-  <div class="gallery">
-    <div class="gif-card"><img src="Wave3.gif" alt="Static wave at constant depth" onclick="openLightbox('Wave3.gif')" /><p>Static wave at constant depth</p></div>
-    <div class="gif-card"><img src="Wave_right.gif" alt="Right wave at constant depth" onclick="openLightbox('Wave_right.gif')" /><p>Right wave at constant depth</p></div>
-    <div class="gif-card"><img src="Wave_left.gif" alt="Left wave at constant depth" onclick="openLightbox('Wave_left.gif')" /><p>Left wave at constant depth</p></div>
+  <div class="menu">
+    <a href="exercise5.html">Exercise 5 – Wave Mechanics</a>
+    <a href="exercise6.html">Exercise 6 – (Add Your Title)</a>
+    <!-- Add more links here if you have more exercises -->
   </div>
 
-  <h2>Tsunami</h2>
-  <div class="gallery">
-    <div class="gif-card"><img src="Tsunami.gif" alt="1D tsunami" onclick="openLightbox('Tsunami.gif')" /><p>1D tsunami</p></div>
-  </div>
+  <footer>
+    Created by Inès Cherfi & Pierrick Gourlaouen
+  </footer>
 
-  <h2>2D Waves and Tsunami on the Geneva Lake</h2>
-
-  <h3>2D CFL Tests</h3>
-  <div class="gallery">
-    <div class="gif-card"><img src="GIF_CFL0707.gif" alt="CFL = 0.707" onclick="openLightbox('GIF_CFL0707.gif')" /><p>CFL = 0.707</p></div>
-    <div class="gif-card"><img src="GIF_CFL1.gif" alt="CFL = 1" onclick="openLightbox('GIF_CFL1.gif')" /><p>CFL = 1</p></div>
-  </div>
-
-  <h3>Waves on the Geneva Lake</h3>
-  <div class="gallery">
-    <div class="gif-card"><img src="Lausanne_tsunami_1m.gif" alt="1 m tsunami" onclick="openLightbox('Lausanne_tsunami_1m.gif')" /><p>1 m tsunami</p></div>
-    <div class="gif-card"><img src="Lausanne_tsunami_3m.gif" alt="3 m tsunami" onclick="openLightbox('Lausanne_tsunami_3m.gif')" /><p>3 m tsunami</p></div>
-    <div class="gif-card"><img src="Lausanne_tsunami_5m.gif" alt="5 m tsunami" onclick="openLightbox('Lausanne_tsunami_5m.gif')" /><p>5 m tsunami</p></div>
-  </div>
-
-  <h3>Wide Wave on the Geneva Lake</h3>
-  <div class="gallery">
-    <div class="gif-card"><img src="Lausanne_tsunami_wide.gif" alt="wide tsunami" onclick="openLightbox('Lausanne_tsunami_wide.gif')" /><p>Wide tsunami, 5 meters high</p></div>
-    <div class="gif-card"><img src="Lausanne_tsunami_wide_10.gif" alt="wide tsunami" onclick="openLightbox('Lausanne_tsunami_wide_10.gif')" /><p>Wide tsunami, 10 meters high</p></div>
-  </div>
-
-  <a href="index.html" class="back-button">&larr; Back to Menu</a>
-
-  <!-- Lightbox Modal -->
-  <div id="lightbox" class="lightbox" onclick="closeLightbox()">
-    <a href="#" class="lightbox-close">&times;</a>
-    <img id="lightbox-img" src="" />
-  </div>
-
-  <script>
-    function openLightbox(src) {
-      const lightbox = document.getElementById("lightbox");
-      document.getElementById("lightbox-img").src = src;
-      lightbox.style.display = "flex";
-      history.pushState(null, '', location.href.split('#')[0]);
-    }
-
-    function closeLightbox() {
-      document.getElementById("lightbox").style.display = "none";
-    }
-
-    document.getElementById("lightbox").addEventListener('click', function(event) {
-      if (event.target === this) {
-        closeLightbox();
-      }
-    });
-
-    window.onload = function() {
-      document.getElementById("lightbox").style.display = "none";
-    };
-  </script>
 </body>
 </html>
